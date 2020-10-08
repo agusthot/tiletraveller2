@@ -1,7 +1,14 @@
+import random
+seed = int(input("Input seed: "))
+random.seed(seed)
 NORTH = 'n'
 EAST = 'e'
 SOUTH = 's'
 WEST = 'w'
+choicelist = [NORTH,EAST,SOUTH,WEST]
+YES = "y"
+NO = "n"
+yesno = [YES,NO]
 def move(direction, col, row):
     ''' Returns updated col, row given the direction '''
     if direction == NORTH:
@@ -55,7 +62,8 @@ def play_one_move(col, row, valid_directions,nolever):
     ''' Plays one move of the game
         Return if victory has been obtained and updated col,row '''
     victory = False
-    direction = input("Direction: ")
+    direction = random.choice(choicelist)
+    print("Direction:",direction)
     direction = direction.lower()
     nolever = False
     if not direction in valid_directions:
@@ -69,13 +77,17 @@ def lever(col,row,coincount):
     coins = int(0)
     totalcoins = coincount
     if col==1 and row == 2:
-        pull = input("Pull a lever (y/n): ")
+        pull = random.choice(yesno)
+        print("Pull a lever (y/n):",pull)
     elif col == 2 and row == 2:
-        pull = input("Pull a lever (y/n): ")
+        pull = random.choice(yesno)
+        print("Pull a lever (y/n):",pull)
     elif col == 2 and row == 3:
-        pull = input("Pull a lever (y/n): ")
+        pull = random.choice(yesno)
+        print("Pull a lever (y/n):",pull)
     elif col == 3 and row == 2:
-        pull = input("Pull a lever (y/n): ")
+        pull = random.choice(yesno)
+        print("Pull a lever (y/n):",pull)
     else:
         return totalcoins
     if pull == "Y" or pull =="y":
@@ -92,6 +104,7 @@ def main():
     row = 1
     col = 1
     coincount = 0
+    moves = 0
     nolever = False
     while not victory:
         valid_directions = find_directions(col, row)
@@ -101,7 +114,8 @@ def main():
             coincount =lever(col,row,coincount)
         else:
             pass
-    print("Victory! Total coins {}.".format(coincount))
+        moves +=1
+    print("Victory! Total coins {}. Moves {}.".format(coincount,moves))
 main()
 while True:
     svar = input("Play again (y/n): ")
