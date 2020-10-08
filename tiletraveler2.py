@@ -111,7 +111,7 @@ def main():
         else:
             pass
     print("Victory! Total coins {}.".format(coincount))
-main()
+main() 
 while True:
     svar = input("Play again (y/n): ")
     if svar == "y":
