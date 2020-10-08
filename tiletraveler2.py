@@ -72,7 +72,7 @@ def play_one_move(col, row, valid_directions,nolever):
         nolever = True
     return victory, col, row, nolever
 
-def lever(col,row,coincount):
+def lever(col,row,coincount): ## Nýtt fall til að telja coins
     coins = int(0)
     totalcoins = coincount
     if col==1 and row == 2:
@@ -96,7 +96,7 @@ def lever(col,row,coincount):
 
 # The main program starts here
 
-def main():
+def main():  ## Bjuggum til main til að geta loopað það
     victory = False
     row = 1
     col = 1
